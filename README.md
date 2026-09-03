@@ -67,7 +67,11 @@ Current linked resources:
 - Chrome Web Store:
   [Vesti on Chrome Web Store](https://chromewebstore.google.com/detail/ofbdkflponkdfpdipfikdchepngakblo?utm_source=item-share-cb)
 - Main product repository:
-  [abraxas914/VESTI](https://github.com/abraxas914/VESTI)
+  [aurora1112-j/vesti](https://github.com/aurora1112-j/vesti)
+- Verified manual package:
+  [Vesti v1.2.0-rc.9](https://github.com/aurora1112-j/vesti/releases/download/v1.2.0-rc.9/Vesti_MVP_v1.2.0-rc.9.zip)
+- SHA-256:
+  `f8c869e42b8070008c7723104eea8b62d29b31f7c4f6c11579f2d53be0a652b9`
 
 ## Relationship To The Main Repo
 

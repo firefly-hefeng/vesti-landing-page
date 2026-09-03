@@ -28,7 +28,7 @@ export function DownloadSection() {
                 Start with the official path.
               </h2>
               <p className="mt-4 max-w-[32ch] text-balance text-base leading-7 text-text-secondary">
-                Use the Chrome Web Store when it is ready, or install the current build manually.
+                Install from the Chrome Web Store, or download the verified release package for manual setup.
               </p>
             </div>
 
@@ -40,7 +40,7 @@ export function DownloadSection() {
                   : {})}
                 className="lovable-button-primary gap-2"
               >
-                {isExternal ? "Open store" : "Install now"}
+                {isExternal ? "Chrome Web Store" : "Install now"}
                 {isExternal ? (
                   <ExternalLink className="h-4 w-4" />
                 ) : (
@@ -49,16 +49,19 @@ export function DownloadSection() {
               </a>
               <a
                 href={marketingLinks.manualZipUrl}
-                download="Vesti_MVP_v1.2.0-rc.8-b7cf816-2026-03-19.zip"
+                download={marketingLinks.manualZipFilename}
                 className="lovable-button-secondary gap-2"
               >
                 <Download className="h-4 w-4" />
-                Manual zip
+                Manual ZIP · {marketingLinks.manualZipVersion}
               </a>
             </div>
           </div>
 
           <div className="mt-5 border-t border-border-subtle pt-5">
+            <p className="mb-4 break-all font-mono text-[11px] leading-5 text-text-secondary">
+              SHA-256: {marketingLinks.manualZipSha256}
+            </p>
             <button
               type="button"
               onClick={() => setIsOpen((value) => !value)}
