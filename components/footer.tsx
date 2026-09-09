@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 import { marketingLinks } from "@/lib/marketing-config"
 
@@ -16,9 +17,24 @@ export function Footer() {
               className="h-5 w-5"
             />
             <span className="text-sm font-medium text-text-primary">Vesti</span>
+            <span className="text-[13px] text-text-tertiary">
+              © 2026 Vesti
+            </span>
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-text-secondary">
+            <Link
+              href="/enterprise"
+              className="transition-colors duration-150 hover:text-text-primary"
+            >
+              Enterprise
+            </Link>
+            <Link
+              href="/news"
+              className="transition-colors duration-150 hover:text-text-primary"
+            >
+              News
+            </Link>
             <a
               href={marketingLinks.githubRepoUrl}
               target="_blank"
@@ -28,10 +44,18 @@ export function Footer() {
               GitHub
             </a>
             <a
-              href="#download"
+              href="/#download"
               className="transition-colors duration-150 hover:text-text-primary"
             >
               Install
+            </a>
+            <a
+              href="https://beian.miit.gov.cn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[12px] text-text-tertiary transition-colors duration-150 hover:text-text-secondary"
+            >
+              苏ICP备2026054650号-1
             </a>
           </div>
         </div>

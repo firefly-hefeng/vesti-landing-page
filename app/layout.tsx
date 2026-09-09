@@ -16,9 +16,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Vesti — Local-first AI Memory",
+  title: "Vesti — The working-memory engine for domain-specific agents",
   description:
-    "Auto-capture your chatbot (ChatGPT, Claude, Gemini & DeepSeek) conversations. Searchable, quantified, and stored entirely in your browser.",
+    "Vesti captures agent conversations across browsers and CLI coding agents, organizes them into structured local memory, and serves recall to any agent through MCP.",
   generator: "v0.app",
   icons: {
     icon: "/logo.svg",

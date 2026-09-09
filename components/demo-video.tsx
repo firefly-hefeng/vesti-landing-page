@@ -4,7 +4,7 @@ export function DemoVideo() {
   return (
     <section
       id="demo"
-      className="scroll-mt-24 px-6 py-12 md:px-8 md:py-14"
+      className="scroll-mt-24 px-6 py-16 md:px-8 md:py-20"
     >
       <div className="page-shell">
         <div className="mx-auto mb-8 max-w-[620px] text-center">

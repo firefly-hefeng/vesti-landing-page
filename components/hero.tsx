@@ -15,12 +15,14 @@ export function Hero() {
     <section className="px-6 pb-14 pt-16 md:px-8 md:pb-16 md:pt-20">
       <div className="page-shell">
         <div className="mx-auto max-w-[760px] text-center">
-          <p className="section-kicker">Local-first AI memory</p>
+          <p className="section-kicker">Vesti · working memory for agents</p>
           <h1 className="mt-4 text-balance text-[clamp(2.8rem,6vw,5.2rem)] font-semibold leading-[1.02] tracking-[-0.07em] text-text-primary">
-            Every thought deserves a home.
+            The working-memory engine for domain-specific agents.
           </h1>
-          <p className="mx-auto mt-5 max-w-[32ch] text-balance text-[1.05rem] leading-7 text-text-secondary">
-            Vesti saves your browser conversations into one searchable local library.
+          <p className="mx-auto mt-5 max-w-[44ch] text-balance text-[1.05rem] leading-7 text-text-secondary">
+            Vesti captures every agent conversation, organizes it into
+            structured local memory, and serves it back to any agent that
+            needs the context.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
