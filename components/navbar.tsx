@@ -46,6 +46,9 @@ export function Navbar() {
           <Link href="/news" className={navLinkClass}>
             News
           </Link>
+          <Link href="/about" className={navLinkClass}>
+            About
+          </Link>
           <a
             href={marketingLinks.githubRepoUrl}
             target="_blank"

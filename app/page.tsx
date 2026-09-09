@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar"
 import { NewsStrip } from "@/components/news-strip"
 import { Hero } from "@/components/hero"
 import { EnterpriseBand } from "@/components/enterprise-band"
+import { TeamBand } from "@/components/team-band"
 import { Features } from "@/components/features"
 import { DemoVideo } from "@/components/demo-video"
 import { SkillsSection } from "@/components/skills-section"
@@ -18,6 +19,7 @@ export default function Page() {
         </div>
         <Hero />
         <EnterpriseBand />
+        <TeamBand />
         <Features />
         <DemoVideo />
         <SkillsSection />

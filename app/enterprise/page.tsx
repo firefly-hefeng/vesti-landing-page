@@ -162,6 +162,18 @@ export default function EnterprisePage() {
               Reach us through GitHub — open an issue or start a discussion and
               we will respond.
             </p>
+            <p className="mx-auto mt-3 max-w-[52ch] text-balance text-[13px] leading-6 text-text-tertiary">
+              Built by a team from Nanjing University, Fudan and SJTU — gold
+              medalists at the AI Hackathon Tour national finals and GOSIM
+              Paris 2026 Frontier Creators.{" "}
+              <a
+                href="/about"
+                className="underline decoration-border-default underline-offset-4 transition-colors duration-150 hover:text-text-secondary"
+              >
+                Meet the team
+              </a>
+              .
+            </p>
             <div className="mt-8 flex justify-center">
               <a
                 href={marketingLinks.githubRepoUrl}

@@ -18,7 +18,7 @@ export function Footer() {
             />
             <span className="text-sm font-medium text-text-primary">Vesti</span>
             <span className="text-[13px] text-text-tertiary">
-              © 2026 Vesti
+              © 2026 Xinji Qundao (Nanjing) Intelligence Technology Co., Ltd.
             </span>
           </div>
 
@@ -40,6 +40,12 @@ export function Footer() {
               className="transition-colors duration-150 hover:text-text-primary"
             >
               News
+            </Link>
+            <Link
+              href="/about"
+              className="transition-colors duration-150 hover:text-text-primary"
+            >
+              About
             </Link>
             <a
               href={marketingLinks.githubRepoUrl}
