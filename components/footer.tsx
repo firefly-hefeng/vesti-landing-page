@@ -24,6 +24,12 @@ export function Footer() {
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-text-secondary">
             <Link
+              href="/#skills"
+              className="transition-colors duration-150 hover:text-text-primary"
+            >
+              Skills
+            </Link>
+            <Link
               href="/enterprise"
               className="transition-colors duration-150 hover:text-text-primary"
             >

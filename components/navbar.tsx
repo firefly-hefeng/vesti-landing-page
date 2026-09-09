@@ -37,6 +37,9 @@ export function Navbar() {
           <Link href="/#demo" className={navLinkClass}>
             Demo
           </Link>
+          <Link href="/#skills" className={navLinkClass}>
+            Skills
+          </Link>
           <Link href="/enterprise" className={navLinkClass}>
             Enterprise
           </Link>

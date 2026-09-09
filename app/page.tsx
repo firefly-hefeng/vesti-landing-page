@@ -4,6 +4,7 @@ import { Hero } from "@/components/hero"
 import { EnterpriseBand } from "@/components/enterprise-band"
 import { Features } from "@/components/features"
 import { DemoVideo } from "@/components/demo-video"
+import { SkillsSection } from "@/components/skills-section"
 import { DownloadSection } from "@/components/download-section"
 import { Footer } from "@/components/footer"
 
@@ -19,6 +20,7 @@ export default function Page() {
         <EnterpriseBand />
         <Features />
         <DemoVideo />
+        <SkillsSection />
         <DownloadSection />
       </main>
       <Footer />

@@ -21,6 +21,26 @@ export interface NewsPost {
 // Newest first. To publish a new post, add an entry at the top of this array.
 export const newsPosts: NewsPost[] = [
   {
+    slug: "vesti-skills-open-sourced",
+    date: "2026-09-09",
+    title: "VESTI Skills: open-source memory and handoff skills for coding agents",
+    excerpt:
+      "Two MIT-licensed skills — vesti-memory for memory recall and vesti-handoff for structured handoff — now documented on this site, with setup instructions for kimi-code, Claude Code, Codex and Cursor.",
+    sections: [
+      {
+        paragraphs: [
+          "VESTI Skills make your AI coding agent remember everything you have done, and hand the work over to the next agent intact. vesti-memory recalls past work through progressive disclosure on top of the VESTI desktop app; vesti-handoff generates a schema-based handoff pack and works standalone.",
+        ],
+      },
+    ],
+    links: [
+      {
+        label: "GitHub — VESTI-SKILLS",
+        href: "https://github.com/firefly-hefeng/VESTI-SKILLS",
+      },
+    ],
+  },
+  {
     slug: "vesti-desktop-0-3-1-and-extension-1-2-0-rc-9",
     date: "2026-09-09",
     title:
