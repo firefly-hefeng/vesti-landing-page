@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { ArrowRight, ArrowUpRight, Database, KeyRound, Network, Package } from "lucide-react"
 
 import { marketingLinks } from "@/lib/marketing-config"
@@ -136,28 +137,46 @@ export function EnterpriseContent() {
                 <p className="mt-1.5 text-sm font-medium leading-6 text-text-secondary">
                   {d.cases.labels.client}: {item.client}
                 </p>
-                <p className="mt-3 text-sm leading-6 text-text-secondary">
-                  {item.challenge}
-                </p>
 
-                <div className="mt-5 space-y-4 border-t border-border-subtle pt-5">
+                <div className="mt-5 space-y-5 border-t border-border-subtle pt-5">
                   <div>
                     <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-tertiary">
-                      {d.cases.labels.what}
+                      {d.cases.labels.painPoints}
                     </p>
-                    <p className="mt-1.5 text-sm leading-6 text-text-secondary">
-                      {item.what}
-                    </p>
+                    <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-6 text-text-secondary">
+                      {item.painPoints.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
                   </div>
                   <div>
                     <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-tertiary">
-                      {d.cases.labels.stack}
+                      {d.cases.labels.solution}
                     </p>
-                    <p className="mt-1.5 font-mono text-[12px] leading-5 text-text-secondary">
-                      {item.stack}
+                    <p className="mt-2 text-sm leading-6 text-text-secondary">
+                      {item.solution}
                     </p>
                   </div>
                 </div>
+
+                {"gallery" in item && item.gallery && (
+                  <div className="mt-5 flex gap-3 overflow-x-auto pb-1">
+                    {item.gallery.map((shot) => (
+                      <figure key={shot.src} className="shrink-0">
+                        <Image
+                          src={shot.src}
+                          alt={shot.alt}
+                          width={960}
+                          height={600}
+                          className="h-40 w-auto rounded-lg border border-border-subtle"
+                        />
+                        <figcaption className="mt-1.5 max-w-[240px] text-[12px] leading-5 text-text-tertiary">
+                          {shot.caption}
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                )}
 
                 <div className="mt-auto pt-5">
                   <div className="rounded-xl border border-border-subtle bg-[rgba(28,28,28,0.02)] p-4">

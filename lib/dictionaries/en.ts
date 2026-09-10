@@ -246,62 +246,87 @@ export const en = {
       title: "Delivered, measured, re-runnable.",
       labels: {
         client: "Client",
-        what: "What we built",
-        stack: "Stack",
+        painPoints: "Pain points",
+        solution: "Solution",
         outcomes: "Outcomes",
       },
       items: [
         {
           tag: "SOE compliance",
           status: "Delivered",
-          client: "Nanjing Poly Grand Theatre (Poly Group)",
-          title: "Compliance agent for a state-owned performing-arts group",
-          challenge:
-            "Turn an entire rules-and-regulations system into a clause-level traceable compliance agent.",
-          what: "Structured 135 documents and 8,148 clauses with semantic vectors; clause-level traceable compliance Q&A, document review, writing assistance and regulation comparison. Four business agents built on site: 7-stage procurement, procurement co-pilot, deep contract review and an expert panel.",
-          stack:
-            "Flask + SQLite private single-node deployment; FTS5 keyword + MiniLM vector hybrid recall (RRF fusion, query rewriting, evidence grading, refuse-without-basis); DeepSeek primary with qwen-plus intranet gateway failover, fully offline-capable; SHA-256 audit chain; Docker.",
+          client:
+            "a large state-owned enterprise (a performing-arts institution of a central SOE group)",
+          title: "Compliance agent for a state-owned performing-arts institution",
+          painPoints: [
+            "Rules and regulations scattered across the institution — compliance questions meant digging through files.",
+            "Reviews done by hand: slow, and inconsistent between reviewers.",
+            "SOE-grade requirements: private deployment, Xinchuang stack, MLPS 2.0 Level 3.",
+          ],
+          solution:
+            "We structured the entire rules system into a clause-level knowledge base, then built clause-level traceable compliance Q&A, document review, writing assistance and regulation comparison on top — FTS5 + vector hybrid recall with evidence grading and refuse-without-basis, a primary/fallback dual-model link that runs fully on the intranet, and a SHA-256 audit chain. Four business agents were developed on site: 7-stage procurement, procurement co-pilot, deep contract review and an expert panel.",
           outcomes:
-            "123 regression tests passing, 20/20 on the real-case eval. Compliance consultation 60 min → 2 min; contract review 3 h → 3 min. Selected to represent the client at Poly Group's first AI innovation competition.",
+            "135 documents, 8,148 structured clauses. 123 regression tests passing, 20/20 on the real-case eval. Compliance consultation 60 min → 2 min; contract review 3 h → 3 min. Selected to represent the client at the group's first AI application innovation competition.",
+          gallery: [
+            {
+              src: "/cases/gov-chat.png",
+              caption: "Compliance Q&A with clause-level evidence",
+              alt: "Compliance Q&A agent answering with clause-level citations.",
+            },
+            {
+              src: "/cases/gov-review.png",
+              caption: "Document review",
+              alt: "Document review workspace of the compliance agent.",
+            },
+            {
+              src: "/cases/gov-library.png",
+              caption: "The rules & regulations knowledge base",
+              alt: "Structured knowledge base of rules and regulations.",
+            },
+          ],
         },
         {
           tag: "Marketing content",
-          status: "Contract ZYZD-VESTI-0001-02",
-          client: "Ziyouzhidi (travel brand)",
+          status: "Signed",
+          client: "a travel brand",
           title: "Social-media content workbench for a travel brand",
-          challenge:
-            "Produce daily content for three enterprise accounts without losing each account's voice.",
-          what: "3 enterprise accounts (2 Xiaohongshu + 1 Douyin): compliant public-data collection via real-browser automation — no cookies, no captcha bypass; an editable tree-structured knowledge base; cross-platform hot-topic clustering (use-now / watch / caution); daily scripts and posts in each account's voice, with interactive revision.",
-          stack:
-            "Next.js 16 + Fastify 5 (Zod/OpenAPI) + BullMQ workers + Chrome extension collector + Node SQLite; Kimi k3 reasoning model; multi-agent review pipeline — extract / style / 4 reviewers / arbitration, passing score ≥85.",
+          painPoints: [
+            "Three enterprise accounts (2 Xiaohongshu + 1 Douyin) — trend-watching and drafting all by hand.",
+            "Accounts can't be logged into; only external public-data collection is allowed.",
+            "Daily output must stay stable, in each account's own voice.",
+          ],
+          solution:
+            "Compliant collection via real-browser automation (no cookies read, no captcha bypass) builds an editable tree-structured knowledge base; a cross-platform hot-topic board clusters trends into use-now / watch / caution; Kimi k3 produces daily scripts and posts in a structured pipeline; a multi-agent review stage only passes pieces scoring ≥85; interactive revision, plus a daily brief in the tenant's timezone.",
           outcomes:
-            "141 corpus entries, knowledge-base quality score 94.4; generated pieces passed editor review at 86–92; end-to-end pnpm verify:flow validation.",
+            "141 corpus entries; knowledge-base quality score 94.4. Finished pieces passed editor review at 86–92. One-click public preview plus an end-to-end verification script.",
         },
         {
           tag: "Industrial documents",
           status: "v2 final delivered",
           client: "A tire manufacturer (export certification)",
           title: "Industrial standards OCR agent",
-          challenge:
-            "Structure a 78-page scanned national standard with zero fabrication.",
-          what: "Fully automated structuring of the 78-page scanned Philippine national standard PNS 25:1994: 48 parameters (26 passenger-car + 14 T-type + 8 TWI), each with clause number, verbatim English evidence (≤220 chars), page number and confidence. Anything inconsistent with human values is flagged “needs human review” — nothing fabricated.",
-          stack:
-            "PyMuPDF 160-DPI rendering + RapidOCR local recognition with coordinate-clustered table reconstruction; DeepSeek reasoning model with full-context extraction; deterministic checks plus LLM re-review with re-extraction loops.",
+          painPoints: [
+            "The 78-page scanned Philippine national standard PNS 25:1994 had to be structured fully automatically.",
+            "Every parameter must carry clause number, verbatim English evidence, page number and confidence.",
+            "Nothing may be fabricated.",
+          ],
+          solution:
+            "PyMuPDF 160-DPI rendering + RapidOCR local recognition, with tables reconstructed from coordinates; a DeepSeek reasoning model extracts clause by clause over the full text; deterministic checks plus LLM re-review run multi-round quality control with re-extraction on failure; anything inconsistent with human values is flagged “needs human review”.",
           outcomes:
-            "v2 final delivered; 21 of 22 parsed parameters at high confidence.",
+            "48 parameters, each with an evidence chain and page traceability; 21 of 22 parsed parameters at high confidence. v2 final delivered, then iterated to the review standard after client feedback.",
         },
         {
           tag: "Internal tool · productizable",
           status: "v2 in daily use",
           client: "BeeMi (KOL discovery, in-house)",
           title: "KOL discovery agent",
-          challenge:
-            "One sentence in, a scored creator list out — supporting our own GEO promotion business.",
-          what: "One natural-language sentence (“find 30 couple bloggers, 50k+ followers, under ¥20k”) → structured search criteria → compliant collection → scoring, follow-up and export.",
-          stack:
-            "Zero-dependency Python + SQLite local app; rule-based parsing with Kimi AI fallback; S–D engagement grading with CPM estimates.",
+          painPoints: [
+            "Finding creators for promotion meant manually browsing platforms.",
+            "No system between a one-sentence need (“30 couple bloggers on Xiaohongshu, 50k+ followers, ¥20k budget”) and a contactable list.",
+          ],
+          solution:
+            "Natural-language needs → structured search criteria (rule-based, with Kimi AI parsing) → compliant collection of public profiles via WebBridge → S–D engagement grading with CPM estimates → filter, follow up, and export business materials. A zero-dependency local app, double-click to run.",
           outcomes:
-            "v2 in daily use, 25 real creators in pool. The point is the working loop, not data scale.",
+            "v2 in daily use with 25 real creators in the pool, supporting our GEO promotion delivery chain — the point is the working loop, not data scale.",
         },
       ],
     },
