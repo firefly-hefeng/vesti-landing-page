@@ -1,4 +1,4 @@
-import { ArrowUpRight, GitBranch, Layers } from "lucide-react"
+import { ArrowUpRight, ChevronDown, GitBranch, Layers } from "lucide-react"
 
 const skillsRepoUrl = "https://github.com/firefly-hefeng/VESTI-SKILLS"
 
@@ -31,7 +31,22 @@ const skills = [
   },
 ]
 
-const installRows = [
+const oneCommandInstalls = [
+  {
+    agent: "Kimi Code",
+    lines: ["/plugins install https://github.com/firefly-hefeng/VESTI-SKILLS"],
+    note: "Run /reload afterwards to activate.",
+  },
+  {
+    agent: "Claude Code",
+    lines: [
+      "/plugin marketplace add firefly-hefeng/VESTI-SKILLS",
+      "/plugin install vesti-skills@vesti-skills",
+    ],
+  },
+]
+
+const manualRows = [
   {
     agent: "kimi-code",
     userLevel: "cp -r skills/<name> ~/.kimi-code/skills/",
@@ -106,8 +121,8 @@ export function SkillsSection() {
                 Add the skills to your agent.
               </h3>
               <p className="mt-2 text-sm leading-6 text-text-secondary">
-                Clone the repo, then copy each skill into your tool's skills
-                directory — user-level or per project.
+                One command in Kimi Code or Claude Code — or copy the skills
+                manually into any agent's skills directory.
               </p>
               <a
                 href={skillsRepoUrl}
@@ -121,51 +136,93 @@ export function SkillsSection() {
             </div>
 
             <div className="min-w-0">
-              <div className="overflow-x-auto rounded-xl border border-border-subtle bg-[rgba(28,28,28,0.92)] px-4 py-3">
-                <code className="whitespace-nowrap font-mono text-[12.5px] leading-6 text-[rgba(247,244,237,0.92)]">
-                  git clone https://github.com/firefly-hefeng/VESTI-SKILLS.git
-                </code>
+              <div className="rounded-xl border border-border-default bg-[rgba(252,251,248,0.9)]">
+                <div className="flex items-center justify-between border-b border-border-subtle px-4 py-2.5">
+                  <p className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
+                    One-command install
+                  </p>
+                  <span className="rounded-full border border-border-subtle bg-[rgba(28,28,28,0.03)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-text-tertiary">
+                    Recommended
+                  </span>
+                </div>
+                <div className="space-y-3 p-4">
+                  {oneCommandInstalls.map((install) => (
+                    <div key={install.agent}>
+                      <p className="mb-1.5 text-[13px] font-medium text-text-primary">
+                        {install.agent}
+                      </p>
+                      <div className="overflow-x-auto rounded-lg border border-border-subtle bg-[rgba(28,28,28,0.92)] px-3.5 py-2.5">
+                        {install.lines.map((line) => (
+                          <code
+                            key={line}
+                            className="block whitespace-nowrap font-mono text-[12.5px] leading-6 text-[rgba(247,244,237,0.92)]"
+                          >
+                            {line}
+                          </code>
+                        ))}
+                      </div>
+                      {install.note && (
+                        <p className="mt-1.5 text-[12px] leading-5 text-text-tertiary">
+                          {install.note}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div className="mt-4 overflow-x-auto rounded-xl border border-border-subtle">
-                <table className="w-full min-w-[560px] border-collapse text-left">
-                  <thead>
-                    <tr className="border-b border-border-subtle bg-[rgba(28,28,28,0.02)]">
-                      <th className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
-                        Agent
-                      </th>
-                      <th className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
-                        User-level
-                      </th>
-                      <th className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
-                        Project-level
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {installRows.map((row) => (
-                      <tr
-                        key={row.agent}
-                        className="border-b border-border-subtle last:border-b-0"
-                      >
-                        <td className="px-4 py-3 text-sm font-medium text-text-primary">
-                          {row.agent}
-                        </td>
-                        <td className="px-4 py-3 font-mono text-[12px] leading-5 text-text-secondary">
-                          {row.userLevel}
-                        </td>
-                        <td className="px-4 py-3 font-mono text-[12px] leading-5 text-text-secondary">
-                          {row.projectLevel}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+              <details className="group mt-4 rounded-xl border border-border-subtle">
+                <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary [&::-webkit-details-marker]:hidden">
+                  Manual install
+                  <ChevronDown className="h-4 w-4 transition-transform duration-150 group-open:rotate-180" />
+                </summary>
+                <div className="border-t border-border-subtle px-4 py-4">
+                  <div className="overflow-x-auto rounded-lg border border-border-subtle bg-[rgba(28,28,28,0.92)] px-3.5 py-2.5">
+                    <code className="whitespace-nowrap font-mono text-[12.5px] leading-6 text-[rgba(247,244,237,0.92)]">
+                      git clone https://github.com/firefly-hefeng/VESTI-SKILLS.git
+                    </code>
+                  </div>
+                  <div className="mt-3 overflow-x-auto rounded-lg border border-border-subtle">
+                    <table className="w-full min-w-[520px] border-collapse text-left">
+                      <thead>
+                        <tr className="border-b border-border-subtle bg-[rgba(28,28,28,0.02)]">
+                          <th className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
+                            Agent
+                          </th>
+                          <th className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
+                            User-level
+                          </th>
+                          <th className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
+                            Project-level
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {manualRows.map((row) => (
+                          <tr
+                            key={row.agent}
+                            className="border-b border-border-subtle last:border-b-0"
+                          >
+                            <td className="px-4 py-3 text-sm font-medium text-text-primary">
+                              {row.agent}
+                            </td>
+                            <td className="px-4 py-3 font-mono text-[12px] leading-5 text-text-secondary">
+                              {row.userLevel}
+                            </td>
+                            <td className="px-4 py-3 font-mono text-[12px] leading-5 text-text-secondary">
+                              {row.projectLevel}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </details>
 
               <p className="mt-4 text-[13px] leading-6 text-text-tertiary">
-                Built on @vesti/memory-core, @vesti/mcp (a 9-tool read-only
-                MCP server) and @vesti/search-files-core.
+                vesti-handoff works standalone. vesti-memory needs the VESTI
+                desktop app (or @vesti/mcp) providing the MCP tools.
               </p>
             </div>
           </div>
