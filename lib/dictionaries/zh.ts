@@ -16,7 +16,7 @@ export const zh: Dict = {
   },
   hero: {
     kicker: "Vesti · 智能体工作记忆",
-    title: "面向专有场景 Agent 的工作记忆引擎。",
+    title: "面向专有场景 Agent 的工作记忆引擎",
     subtitle:
       "Vesti 捕获每一次 Agent 对话，整理为结构化的本地记忆，并在任何 Agent 需要时把上下文喂回去。",
     install: "立即安装",
@@ -27,7 +27,7 @@ export const zh: Dict = {
   },
   enterpriseBand: {
     kicker: "企业服务 · FDE",
-    title: "企业知识 Agent,FDE 式交付。",
+    title: "企业知识 Agent,FDE 式交付",
     description:
       "我们的工程师进驻你的团队,用 4–20 周把一个真实场景变成跑得起来、测得出数、可一键复测的 Agent 系统——私有化部署、证据链输出、人工做最终关卡。",
     cta: "了解企业服务",
@@ -39,7 +39,7 @@ export const zh: Dict = {
   },
   teamBand: {
     kicker: "团队",
-    title: "七个学科,一套记忆栈。",
+    title: "七个学科,一套记忆栈",
     description:
       "来自南京大学、复旦大学、上海交通大学的跨学科团队——AI Hackathon Tour 全国总决赛金奖、GOSIM Paris 2026 Frontier Creators 入选团队。63 天、463 次提交,从零到上线。",
     cta: "认识团队",
@@ -47,7 +47,7 @@ export const zh: Dict = {
   },
   features: {
     kicker: "特性",
-    title: "不尚形式,强于回想。",
+    title: "不尚形式,强于回想",
     items: [
       {
         title: "自动捕获",
@@ -69,12 +69,12 @@ export const zh: Dict = {
   },
   demo: {
     kicker: "演示",
-    title: "一次看完记忆闭环。",
-    subtitle: "捕获会话,事后检索,快速找回上下文。",
+    title: "一次看完记忆闭环",
+    subtitle: "捕获会话,事后检索,快速找回上下文",
   },
   skills: {
     kicker: "技能包",
-    title: "为编码 Agent 准备的开源技能。",
+    title: "为编码 Agent 准备的开源技能",
     subtitle:
       "VESTI Skills(MIT 开源)让你的 AI 编程 Agent 记得你做过的一切,并把工作完整交给下一个 Agent。",
     cards: [
@@ -105,7 +105,7 @@ export const zh: Dict = {
     ],
     install: {
       kicker: "安装",
-      title: "把技能装进你的 Agent。",
+      title: "把技能装进你的 Agent",
       description:
         "在 Kimi Code 或 Claude Code 里一条命令搞定,也可以手动拷贝到任意 Agent 的 skills 目录。",
       githubCta: "GitHub — VESTI-SKILLS",
@@ -146,8 +146,8 @@ export const zh: Dict = {
   },
   download: {
     kicker: "下载",
-    title: "两款产品,一个记忆闭环。",
-    subtitle: "在 Agent 真正工作的地方捕获——浏览器里,以及本机的 CLI 编程 Agent 里。",
+    title: "两款产品,一个记忆闭环",
+    subtitle: "在 Agent 真正工作的地方捕获——浏览器里,以及本机的 CLI 编程 Agent 里",
     extension: {
       meta: "浏览器扩展",
       title: "心迹 Vesti 浏览器扩展",
@@ -185,7 +185,7 @@ export const zh: Dict = {
   enterprise: {
     hero: {
       kicker: "企业服务",
-      title: "本地优先的企业知识 Agent,FDE 式交付。",
+      title: "本地优先的企业知识 Agent,FDE 式交付",
       subtitle:
         "我们的工程师进驻你的团队,用 4–20 周把一个真实场景变成跑得起来、测得出数、可一键复测的 Agent 系统。",
       ctaPrimary: "在 GitHub 上联系",
@@ -220,20 +220,20 @@ export const zh: Dict = {
     },
     differentiators: {
       kicker: "为什么是 Vesti",
-      title: "三条写进交付标准的承诺。",
+      title: "三条写进交付标准的承诺",
       items: [
         {
-          title: "数据不出边界。",
+          title: "数据不出边界",
           description:
             "本地化/私有化部署,纯内网可跑,SHA-256 审计留痕;满足国企合规与等保 2.0 要求。",
         },
         {
-          title: "AI 绝不越权。",
+          title: "AI 绝不越权",
           description:
             "证据分级、无据拒答、分歧上交人工。AI 提建议,人来做决定——我们敢把这条写进交付标准。",
         },
         {
-          title: "效果可量化。",
+          title: "效果可量化",
           description:
             "每次交付附带回归测试集与量化 KPI;验收是现场一键复测,不是看演示。",
         },
@@ -241,7 +241,7 @@ export const zh: Dict = {
     },
     cases: {
       kicker: "交付案例",
-      title: "已交付、可量化、可复测。",
+      title: "已交付、可量化、可复测",
       labels: {
         client: "客户",
         what: "我们怎么做",
@@ -299,8 +299,8 @@ export const zh: Dict = {
     },
     fde: {
       kicker: "交付模式",
-      title: "驻场工程师交付,不是 PPT。",
-      subtitle: "4–20 周驻场节奏——交接不绑定我们。",
+      title: "驻场工程师交付,不是 PPT",
+      subtitle: "4–20 周驻场节奏——交接不绑定我们",
       steps: [
         {
           title: "驻场调研",
@@ -323,7 +323,7 @@ export const zh: Dict = {
     },
     verticals: {
       kicker: "主攻方向",
-      title: "三个垂域。",
+      title: "三个垂域",
       items: [
         {
           title: "国企/事业单位制度合规",
@@ -341,7 +341,7 @@ export const zh: Dict = {
     },
     platform: {
       kicker: "平台层",
-      title: "每次交付背后的记忆栈。",
+      title: "每次交付背后的记忆栈",
       items: [
         {
           name: "@vesti/memory-core",
@@ -371,7 +371,7 @@ export const zh: Dict = {
     },
     contact: {
       title: "在做需要记忆的 Agent?",
-      subtitle: "通过 GitHub 联系我们——开个 issue 或发起讨论,我们会回复。",
+      subtitle: "通过 GitHub 联系我们——开个 issue 或发起讨论,我们会回复",
       cta: "通过 GitHub 联系",
       teamNote:
         "由南京大学、复旦大学、上海交通大学团队打造——AI Hackathon Tour 全国总决赛金奖、GOSIM Paris 2026 Frontier Creators 入选团队。",
@@ -381,13 +381,13 @@ export const zh: Dict = {
   about: {
     hero: {
       kicker: "关于",
-      title: "一支真把东西做出来的团队。",
+      title: "一支真把东西做出来的团队",
       subtitle:
         "Vesti 是本地优先的 AI 记忆基础设施,由一支来自南京大学、复旦大学、上海交通大学的跨学科团队在南京打造。",
     },
     teamIntro: {
       kicker: "团队",
-      title: "七个学科,一套记忆栈。",
+      title: "七个学科,一套记忆栈",
       description:
         "7 名核心成员、6 人全职,覆盖计算生物学、软件工程、人工智能、金融、社会学、哲学、信息技术 7 个学科。团队共事 2–3 年以上,63 天、463 次提交,从零到上线。",
       photoAlt: "Vesti 团队在南京。",
@@ -519,14 +519,14 @@ export const zh: Dict = {
     },
     contact: {
       kicker: "联系方式",
-      title: "与我们合作。",
+      title: "与我们合作",
       person: "何锋,创始人 & CEO",
       address: "南京市建邺区永初路 8 号 T4 栋 12 层 1205-78",
     },
   },
   news: {
     kicker: "动态",
-    title: "发布与动态。",
+    title: "发布与动态",
     backHome: "← 返回首页",
   },
 }
