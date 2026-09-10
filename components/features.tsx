@@ -1,29 +1,17 @@
+"use client"
+
 import { Lock, Search, TimerReset, WandSparkles } from "lucide-react"
 
-const features = [
-  {
-    icon: TimerReset,
-    title: "Auto-capture",
-    description: "Save finished conversations without exporting anything.",
-  },
-  {
-    icon: Search,
-    title: "Fast search",
-    description: "Find past prompts, notes, and decisions in seconds.",
-  },
-  {
-    icon: Lock,
-    title: "Local-first",
-    description: "Keep your conversation history on your own machine.",
-  },
-  {
-    icon: WandSparkles,
-    title: "Clear recall",
-    description: "Reopen the exact thread instead of starting over.",
-  },
-]
+import { useLanguage } from "@/lib/i18n"
+import { en } from "@/lib/dictionaries/en"
+import { zh } from "@/lib/dictionaries/zh"
+
+const icons = [TimerReset, Search, Lock, WandSparkles]
 
 export function Features() {
+  const { lang } = useLanguage()
+  const d = lang === "zh" ? zh.features : en.features
+
   return (
     <section
       id="features"
@@ -31,15 +19,15 @@ export function Features() {
     >
       <div className="page-shell">
         <div className="mx-auto mb-8 max-w-[620px] text-center">
-          <p className="section-kicker">Features</p>
+          <p className="section-kicker">{d.kicker}</p>
           <h2 className="mt-4 text-balance text-[clamp(2.1rem,4.5vw,3.6rem)] font-semibold leading-[1.03] tracking-[-0.06em] text-text-primary">
-            Short on ceremony, strong on recall.
+            {d.title}
           </h2>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {features.map((feature) => {
-            const Icon = feature.icon
+          {d.items.map((feature, index) => {
+            const Icon = icons[index % icons.length]
 
             return (
               <article key={feature.title} className="lovable-card p-6">

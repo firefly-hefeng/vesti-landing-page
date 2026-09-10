@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 
@@ -6,11 +8,16 @@ import {
   isExternalPrimaryInstall,
   marketingLinks,
 } from "@/lib/marketing-config"
+import { useLanguage } from "@/lib/i18n"
+import { en } from "@/lib/dictionaries/en"
+import { zh } from "@/lib/dictionaries/zh"
 
 const navLinkClass =
   "text-sm text-text-secondary transition-colors duration-150 hover:text-text-primary"
 
 export function Navbar() {
+  const { lang, setLang } = useLanguage()
+  const d = lang === "zh" ? zh.nav : en.nav
   const installHref = getPrimaryInstallHref()
   const isExternal = isExternalPrimaryInstall()
 
@@ -30,24 +37,24 @@ export function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           <Link href="/#features" className={navLinkClass}>
-            Features
+            {d.features}
           </Link>
           <Link href="/#demo" className={navLinkClass}>
-            Demo
+            {d.demo}
           </Link>
           <Link href="/#skills" className={navLinkClass}>
-            Skills
+            {d.skills}
           </Link>
           <Link href="/enterprise" className={navLinkClass}>
-            Enterprise
+            {d.enterprise}
           </Link>
           <Link href="/news" className={navLinkClass}>
-            News
+            {d.news}
           </Link>
           <Link href="/about" className={navLinkClass}>
-            About
+            {d.about}
           </Link>
           <a
             href={marketingLinks.githubRepoUrl}
@@ -55,17 +62,35 @@ export function Navbar() {
             rel="noopener noreferrer"
             className={navLinkClass}
           >
-            GitHub
+            {d.github}
           </a>
         </div>
 
-        <a
-          href={installHref}
-          {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-          className="lovable-button-secondary px-4 py-2.5 text-[13px]"
-        >
-          Install
-        </a>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setLang(lang === "zh" ? "en" : "zh")}
+            aria-label="Switch language / 切换语言"
+            className="inline-flex items-center gap-1 rounded-lg border border-border-default bg-[rgba(252,251,248,0.88)] px-2.5 py-1.5 font-mono text-[12px] text-text-secondary transition-colors duration-150 hover:text-text-primary"
+          >
+            <span className={lang === "en" ? "font-semibold text-text-primary" : ""}>
+              EN
+            </span>
+            <span className="text-text-tertiary">/</span>
+            <span className={lang === "zh" ? "font-semibold text-text-primary" : ""}>
+              中
+            </span>
+          </button>
+          <a
+            href={installHref}
+            {...(isExternal
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            className="lovable-button-secondary px-4 py-2.5 text-[13px]"
+          >
+            {d.install}
+          </a>
+        </div>
       </div>
     </nav>
   )

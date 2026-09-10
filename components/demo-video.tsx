@@ -1,6 +1,14 @@
+"use client"
+
 import { marketingLinks } from "@/lib/marketing-config"
+import { useLanguage } from "@/lib/i18n"
+import { en } from "@/lib/dictionaries/en"
+import { zh } from "@/lib/dictionaries/zh"
 
 export function DemoVideo() {
+  const { lang } = useLanguage()
+  const d = lang === "zh" ? zh.demo : en.demo
+
   return (
     <section
       id="demo"
@@ -8,12 +16,12 @@ export function DemoVideo() {
     >
       <div className="page-shell">
         <div className="mx-auto mb-8 max-w-[620px] text-center">
-          <p className="section-kicker">Demo</p>
+          <p className="section-kicker">{d.kicker}</p>
           <h2 className="mt-4 text-balance text-[clamp(2.1rem,4.5vw,3.5rem)] font-semibold leading-[1.03] tracking-[-0.06em] text-text-primary">
-            See the memory loop in one pass.
+            {d.title}
           </h2>
           <p className="mx-auto mt-4 max-w-[32ch] text-balance text-base leading-7 text-text-secondary">
-            Capture the thread, search it later, and reopen the context fast.
+            {d.subtitle}
           </p>
         </div>
 

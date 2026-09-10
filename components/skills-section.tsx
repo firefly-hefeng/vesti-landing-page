@@ -1,41 +1,20 @@
+"use client"
+
 import { ArrowUpRight, ChevronDown, GitBranch, Layers } from "lucide-react"
+
+import { useLanguage } from "@/lib/i18n"
+import { en } from "@/lib/dictionaries/en"
+import { zh } from "@/lib/dictionaries/zh"
 
 const skillsRepoUrl = "https://github.com/firefly-hefeng/VESTI-SKILLS"
 
-const skills = [
-  {
-    icon: Layers,
-    name: "vesti-memory",
-    tagline: "Memory recall for any agent session.",
-    description:
-      "Progressive disclosure: pull the project context pack at session start, then drill from session index to file locations to exact turns.",
-    bullets: [
-      "Auto-loads a context pack on session start — state card, active files, open questions.",
-      "Drills down through vesti_search, vesti_search_files, vesti_timeline and vesti_get_turns.",
-      "No more re-briefing a new agent, or losing decision rationale after /compact.",
-    ],
-    requirement: "Requires the VESTI desktop app running locally with vesti-mcp registered.",
-  },
-  {
-    icon: GitBranch,
-    name: "vesti-handoff",
-    tagline: "Structured handoff between agents.",
-    description:
-      "Generates a schema-based handoff pack — goal, state, files, failedPaths, verification, nextSteps — so the next agent starts from proof, not trust.",
-    bullets: [
-      "One rule: verify before you take over — rerun verification.lastCommand first.",
-      "Works standalone, no VESTI dependency.",
-      "Schema-aligned with the VESTI desktop app's Relay Pack.",
-    ],
-    requirement: "Standalone — works without VESTI.",
-  },
-]
+const skillIcons = [Layers, GitBranch]
 
 const oneCommandInstalls = [
   {
     agent: "Kimi Code",
     lines: ["/plugins install https://github.com/firefly-hefeng/VESTI-SKILLS"],
-    note: "Run /reload afterwards to activate.",
+    noteKey: "kimi" as const,
   },
   {
     agent: "Claude Code",
@@ -43,28 +22,14 @@ const oneCommandInstalls = [
       "/plugin marketplace add firefly-hefeng/VESTI-SKILLS",
       "/plugin install vesti-skills@vesti-skills",
     ],
-  },
-]
-
-const manualRows = [
-  {
-    agent: "kimi-code",
-    userLevel: "cp -r skills/<name> ~/.kimi-code/skills/",
-    projectLevel: ".kimi-code/skills/",
-  },
-  {
-    agent: "Claude Code",
-    userLevel: "cp -r skills/<name> ~/.claude/skills/",
-    projectLevel: ".claude/skills/",
-  },
-  {
-    agent: "Codex / Cursor / others",
-    userLevel: "Import the full SKILL.md per the tool's skills/prompt convention",
-    projectLevel: "Same as user-level",
+    noteKey: null,
   },
 ]
 
 export function SkillsSection() {
+  const { lang } = useLanguage()
+  const d = lang === "zh" ? zh.skills : en.skills
+
   return (
     <section
       id="skills"
@@ -72,19 +37,18 @@ export function SkillsSection() {
     >
       <div className="page-shell">
         <div className="mx-auto mb-10 max-w-[680px] text-center">
-          <p className="section-kicker">Skills</p>
+          <p className="section-kicker">{d.kicker}</p>
           <h2 className="mt-4 text-balance text-[clamp(2.1rem,4.5vw,3.4rem)] font-semibold leading-[1.03] tracking-[-0.06em] text-text-primary">
-            Open-source skills for coding agents.
+            {d.title}
           </h2>
           <p className="mx-auto mt-4 max-w-[46ch] text-balance text-base leading-7 text-text-secondary">
-            VESTI Skills (MIT) make your AI coding agent remember everything
-            you have done — and hand the work over to the next agent, intact.
+            {d.subtitle}
           </p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {skills.map((skill) => {
-            const Icon = skill.icon
+          {d.cards.map((skill, index) => {
+            const Icon = skillIcons[index % skillIcons.length]
 
             return (
               <article key={skill.name} className="lovable-card p-6 md:p-7">
@@ -116,13 +80,12 @@ export function SkillsSection() {
         <div className="mt-4 lovable-panel p-6 md:p-8">
           <div className="grid gap-6 md:grid-cols-[minmax(0,280px)_minmax(0,1fr)]">
             <div>
-              <p className="section-kicker">Install</p>
+              <p className="section-kicker">{d.install.kicker}</p>
               <h3 className="mt-3 text-[1.25rem] font-medium leading-7 tracking-[-0.03em] text-text-primary">
-                Add the skills to your agent.
+                {d.install.title}
               </h3>
               <p className="mt-2 text-sm leading-6 text-text-secondary">
-                One command in Kimi Code or Claude Code — or copy the skills
-                manually into any agent's skills directory.
+                {d.install.description}
               </p>
               <a
                 href={skillsRepoUrl}
@@ -130,7 +93,7 @@ export function SkillsSection() {
                 rel="noopener noreferrer"
                 className="lovable-button-secondary mt-5 gap-2 px-4 py-2.5 text-[13px]"
               >
-                GitHub — VESTI-SKILLS
+                {d.install.githubCta}
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
@@ -139,25 +102,17 @@ export function SkillsSection() {
               <div className="rounded-xl border border-border-default bg-[rgba(252,251,248,0.9)]">
                 <div className="border-b border-border-subtle px-4 py-2.5">
                   <p className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
-                    Just tell your agent
+                    {d.install.justTell.label}
                   </p>
                 </div>
                 <div className="p-4">
                   <div className="rounded-lg border border-border-subtle bg-[rgba(28,28,28,0.92)] px-3.5 py-2.5">
                     <p className="whitespace-pre-wrap font-mono text-[12.5px] leading-6 text-[rgba(247,244,237,0.92)]">
-                      Install the VESTI skills from GitHub: clone
-                      https://github.com/firefly-hefeng/VESTI-SKILLS to a temp
-                      dir, copy skills/vesti-memory and skills/vesti-handoff
-                      into your user-level skills directory (~/.kimi-code/skills/
-                      for Kimi Code, ~/.claude/skills/ for Claude Code, or your
-                      tool&apos;s equivalent), then list what you installed and
-                      tell me whether a restart or new session is needed.
+                      {d.install.justTell.prompt}
                     </p>
                   </div>
                   <p className="mt-2 text-[12px] leading-5 text-text-tertiary">
-                    Paste this to Kimi Code, Claude Code, Codex or any
-                    shell-capable agent — it clones, copies and verifies by
-                    itself. Skills activate in a new session.
+                    {d.install.justTell.note}
                   </p>
                 </div>
               </div>
@@ -165,10 +120,10 @@ export function SkillsSection() {
               <div className="mt-4 rounded-xl border border-border-default bg-[rgba(252,251,248,0.9)]">
                 <div className="flex items-center justify-between border-b border-border-subtle px-4 py-2.5">
                   <p className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
-                    One-command install
+                    {d.install.oneCommand.label}
                   </p>
                   <span className="rounded-full border border-border-subtle bg-[rgba(28,28,28,0.03)] px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-text-tertiary">
-                    Recommended
+                    {d.install.oneCommand.recommended}
                   </span>
                 </div>
                 <div className="space-y-3 p-4">
@@ -187,9 +142,9 @@ export function SkillsSection() {
                           </code>
                         ))}
                       </div>
-                      {install.note && (
+                      {install.noteKey === "kimi" && (
                         <p className="mt-1.5 text-[12px] leading-5 text-text-tertiary">
-                          {install.note}
+                          {d.install.oneCommand.kimiNote}
                         </p>
                       )}
                     </div>
@@ -199,7 +154,7 @@ export function SkillsSection() {
 
               <details className="group mt-4 rounded-xl border border-border-subtle">
                 <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-3 text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary [&::-webkit-details-marker]:hidden">
-                  Manual install
+                  {d.install.manual.label}
                   <ChevronDown className="h-4 w-4 transition-transform duration-150 group-open:rotate-180" />
                 </summary>
                 <div className="border-t border-border-subtle px-4 py-4">
@@ -212,19 +167,18 @@ export function SkillsSection() {
                     <table className="w-full min-w-[520px] border-collapse text-left">
                       <thead>
                         <tr className="border-b border-border-subtle bg-[rgba(28,28,28,0.02)]">
-                          <th className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
-                            Agent
-                          </th>
-                          <th className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
-                            User-level
-                          </th>
-                          <th className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
-                            Project-level
-                          </th>
+                          {d.install.manual.headers.map((header) => (
+                            <th
+                              key={header}
+                              className="px-4 py-2.5 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary"
+                            >
+                              {header}
+                            </th>
+                          ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {manualRows.map((row) => (
+                        {d.install.manual.rows.map((row) => (
                           <tr
                             key={row.agent}
                             className="border-b border-border-subtle last:border-b-0"
@@ -247,8 +201,7 @@ export function SkillsSection() {
               </details>
 
               <p className="mt-4 text-[13px] leading-6 text-text-tertiary">
-                vesti-handoff works standalone. vesti-memory needs the VESTI
-                desktop app (or @vesti/mcp) providing the MCP tools.
+                {d.install.deps}
               </p>
             </div>
           </div>

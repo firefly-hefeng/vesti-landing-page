@@ -8,8 +8,13 @@ import {
   isExternalPrimaryInstall,
   marketingLinks,
 } from "@/lib/marketing-config"
+import { useLanguage } from "@/lib/i18n"
+import { en } from "@/lib/dictionaries/en"
+import { zh } from "@/lib/dictionaries/zh"
 
 export function DownloadSection() {
+  const { lang } = useLanguage()
+  const d = lang === "zh" ? zh.download : en.download
   const [isOpen, setIsOpen] = useState(false)
   const primaryHref = getPrimaryInstallHref()
   const isExternal = isExternalPrimaryInstall()
@@ -21,28 +26,25 @@ export function DownloadSection() {
     >
       <div className="page-shell">
         <div className="mx-auto mb-10 max-w-[620px] text-center">
-          <p className="section-kicker">Download</p>
+          <p className="section-kicker">{d.kicker}</p>
           <h2 className="mt-4 text-balance text-[clamp(2.1rem,4.5vw,3.4rem)] font-semibold leading-[1.03] tracking-[-0.06em] text-text-primary">
-            Two products, one memory loop.
+            {d.title}
           </h2>
           <p className="mx-auto mt-4 max-w-[38ch] text-balance text-base leading-7 text-text-secondary">
-            Capture agent work where it happens — in the browser, and in your
-            local CLI coding agents.
+            {d.subtitle}
           </p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
           <article className="lovable-panel flex flex-col p-6 md:p-7">
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-tertiary">
-              Browser extension · {marketingLinks.manualZipVersion}
+              {d.extension.meta} · {marketingLinks.manualZipVersion}
             </p>
             <h3 className="mt-3 text-[1.35rem] font-medium leading-7 tracking-[-0.03em] text-text-primary">
-              心迹 Vesti for the browser
+              {d.extension.title}
             </h3>
             <p className="mt-2 text-sm leading-6 text-text-secondary">
-              Auto-capture conversations across ChatGPT, Claude, Gemini,
-              DeepSeek, Tongyi, Doubao, Kimi and Yuanbao — structured,
-              searchable, local-first.
+              {d.extension.description}
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -53,7 +55,7 @@ export function DownloadSection() {
                   : {})}
                 className="lovable-button-primary gap-2"
               >
-                {isExternal ? "Chrome Web Store" : "Install now"}
+                {isExternal ? d.extension.store : d.extension.installNow}
                 {isExternal ? (
                   <ExternalLink className="h-4 w-4" />
                 ) : (
@@ -65,7 +67,7 @@ export function DownloadSection() {
                 className="lovable-button-secondary gap-2"
               >
                 <Download className="h-4 w-4" />
-                Manual ZIP
+                {d.extension.manualZip}
               </a>
             </div>
 
@@ -80,7 +82,7 @@ export function DownloadSection() {
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-expanded={isOpen}
                 >
-                  Manual install steps
+                  {d.extension.manualSteps}
                   <ChevronDown
                     className={`h-4 w-4 transition-transform duration-150 ${
                       isOpen ? "rotate-180" : ""
@@ -90,16 +92,21 @@ export function DownloadSection() {
 
                 {isOpen && (
                   <ol className="mt-4 space-y-2 text-sm leading-7 text-text-secondary">
-                    <li>Download and unzip the package.</li>
-                    <li>
-                      Open{" "}
-                      <code className="rounded bg-[rgba(252,251,248,0.92)] px-1.5 py-0.5 font-mono text-xs text-text-primary">
-                        chrome://extensions
-                      </code>
-                      .
-                    </li>
-                    <li>Enable Developer mode.</li>
-                    <li>Choose Load unpacked and select the folder.</li>
+                    {d.extension.steps.map((step, index) => (
+                      <li key={step}>
+                        {index === 1 ? (
+                          <>
+                            {step.split("chrome://extensions")[0]}
+                            <code className="rounded bg-[rgba(252,251,248,0.92)] px-1.5 py-0.5 font-mono text-xs text-text-primary">
+                              chrome://extensions
+                            </code>
+                            {step.split("chrome://extensions")[1]}
+                          </>
+                        ) : (
+                          step
+                        )}
+                      </li>
+                    ))}
                   </ol>
                 )}
               </div>
@@ -108,15 +115,13 @@ export function DownloadSection() {
 
           <article className="lovable-panel flex flex-col p-6 md:p-7">
             <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-text-tertiary">
-              Desktop app · {marketingLinks.desktopVersion} · Windows
+              {d.desktop.meta} · {marketingLinks.desktopVersion}
             </p>
             <h3 className="mt-3 text-[1.35rem] font-medium leading-7 tracking-[-0.03em] text-text-primary">
-              Vesti for coding agents
+              {d.desktop.title}
             </h3>
             <p className="mt-2 text-sm leading-6 text-text-secondary">
-              Capture Claude Code, Cursor, Kimi Code and Codex sessions into an
-              L0–L3 layered memory system, with a built-in MCP server any agent
-              can mount.
+              {d.desktop.description}
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -125,7 +130,7 @@ export function DownloadSection() {
                 className="lovable-button-primary gap-2"
               >
                 <Download className="h-4 w-4" />
-                Download for Windows
+                {d.desktop.downloadWindows}
               </a>
               <a
                 href={marketingLinks.githubRepoUrl}
@@ -133,7 +138,7 @@ export function DownloadSection() {
                 rel="noopener noreferrer"
                 className="lovable-button-secondary gap-2"
               >
-                GitHub
+                {d.desktop.github}
                 <ExternalLink className="h-4 w-4" />
               </a>
             </div>
