@@ -137,6 +137,32 @@ export function SkillsSection() {
 
             <div className="min-w-0">
               <div className="rounded-xl border border-border-default bg-[rgba(252,251,248,0.9)]">
+                <div className="border-b border-border-subtle px-4 py-2.5">
+                  <p className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
+                    Just tell your agent
+                  </p>
+                </div>
+                <div className="p-4">
+                  <div className="rounded-lg border border-border-subtle bg-[rgba(28,28,28,0.92)] px-3.5 py-2.5">
+                    <p className="whitespace-pre-wrap font-mono text-[12.5px] leading-6 text-[rgba(247,244,237,0.92)]">
+                      Install the VESTI skills from GitHub: clone
+                      https://github.com/firefly-hefeng/VESTI-SKILLS to a temp
+                      dir, copy skills/vesti-memory and skills/vesti-handoff
+                      into your user-level skills directory (~/.kimi-code/skills/
+                      for Kimi Code, ~/.claude/skills/ for Claude Code, or your
+                      tool&apos;s equivalent), then list what you installed and
+                      tell me whether a restart or new session is needed.
+                    </p>
+                  </div>
+                  <p className="mt-2 text-[12px] leading-5 text-text-tertiary">
+                    Paste this to Kimi Code, Claude Code, Codex or any
+                    shell-capable agent — it clones, copies and verifies by
+                    itself. Skills activate in a new session.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-4 rounded-xl border border-border-default bg-[rgba(252,251,248,0.9)]">
                 <div className="flex items-center justify-between border-b border-border-subtle px-4 py-2.5">
                   <p className="font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-tertiary">
                     One-command install
